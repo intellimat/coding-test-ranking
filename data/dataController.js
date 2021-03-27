@@ -1,19 +1,22 @@
 const filesUtils = require('../utils/filesUtils')
 
 const getQualityAds = () => {
-    ads = filesUtils.readJSON(__dirname + '/data.json')
-    filteredAds = ads.filter( ad => ad.score !== null && ad.score >= 40 )
+    calculateScore()
+    ads = filesUtils.readJSON(__dirname + '/ads.json')
+    filteredAds = ads.filter( ad => ad.score !== null && ad.score >= 40 ).sort( (firstEl, secondEl) => (firstEl.score < secondEl.score) ? 1 : -1)
     return filteredAds      // filtered ads
 }
 
+
 const getAds = () => {
-    ads = filesUtils.readJSON(__dirname + '/data.json')
+    calculateScore()
+    ads = filesUtils.readJSON(__dirname + '/ads.json')
     return ads
 }
 
 const calculateScore = () => {
     try {
-        ads = filesUtils.readJSON(__dirname + '/data.json')
+        ads = filesUtils.readJSON(__dirname + '/ads.json')
 
         for (const ad of ads) {
             score = 0   // Initialize score
@@ -25,9 +28,11 @@ const calculateScore = () => {
 
             if (ad.score < 40)
                 ad.irrelevantSince = new Date().toISOString()
+            else
+                ad.irrelevantSince = ''
         }
 
-        filesUtils.writeJSON(__dirname + '/data.json', ads)      // write synchronously the updated data
+        filesUtils.writeJSON(__dirname + '/ads.json', ads)      // write synchronously the updated data
 
         return true
 
