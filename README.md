@@ -14,10 +14,11 @@
 #### Notes 
 * The server has been deployed on Heroku so you can easily try the endpoints :smiley:
 * Heroku link: https://idealista-task.herokuapp.com/ 
-* If you want to run the server locally you need to install Node Js (version > 14)  on your local machine<br/>
-  then go to the folder which contains package.json and run these commands from the CLI: <br/>
+* If you want to run the server locally you need to install Node Js (version > 14)  on your local machine.<br/>
+  Then, download the project folder, and from coding-test-ranking directory, which contains package.json, run the following commands from the CLI: <br/>
   1) npm install <br/> 
-  2) npm start
+  2) npm start <br/>
+ * The server will run locally by default on port: 12000
   
 #### Requests' Example
 On heroku:
